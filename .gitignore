@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 .class
 .idea
 .iml
 out
 banque interactive.iml
+=======
+*.class
+>>>>>>> 7d007fa74368feaa80bc6473541b171961b1515e
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
