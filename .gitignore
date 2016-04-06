@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-.class
-.idea
-.iml
-out
-banque interactive.iml
-=======
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
 *.class
->>>>>>> 7d007fa74368feaa80bc6473541b171961b1515e
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -18,3 +12,4 @@ banque interactive.iml
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+.idea

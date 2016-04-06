@@ -8,7 +8,7 @@ public class Client {
 
     /* Attributs/constructeur */
     private Compte[] comptes = new Compte[100];
-    private int NombreDeComptes = 0;
+    private int nombreDeComptes = 0;
     private String nom;
 
 
@@ -16,21 +16,21 @@ public class Client {
     /* Methodes */
 
     //creer un nouveau client
-    public Client(String NouveauClient) {
-        nom = NouveauClient;
+    public Client(String nouveauClient) {
+        nom = nouveauClient;
         ajouterCompte();
     }
 
     // Ajouter un compte
     public void ajouterCompte() {
-        NombreDeComptes++;
-        comptes[NombreDeComptes] = new Compte();
+        nombreDeComptes++;
+        comptes[nombreDeComptes] = new Compte();
     }
 
     // Retourne le solde total du client
     public double soldeTotal() {
         double somme = 0;
-        for (int i = 1; i <= NombreDeComptes; i++)
+        for (int i = 1; i <= nombreDeComptes; i++)
             somme += comptes[i].getSolde();
         return somme;
     }
@@ -44,7 +44,7 @@ public class Client {
     public void afficherBilan() {
         System.out.println("Bilan du/des compte(s) de " + nom);
         afficherSolde();
-        for (int i = 1; i <= NombreDeComptes; i++)
+        for (int i = 1; i <= nombreDeComptes; i++)
             System.out.println(" Le solde du compte n°" + i + " est de " + comptes[i].getSolde() + " DA");
         System.out.println();
     }
@@ -57,7 +57,7 @@ public class Client {
     //Affiche les compte du client
     public void afficherCompte() {
 
-        for (int i = 1; i <= NombreDeComptes; i++) {
+        for (int i = 1; i <= nombreDeComptes; i++) {
             System.out.println("compte " + i + " : " + comptes[i].getSolde() + " DA");
         }
     }
@@ -93,7 +93,7 @@ public class Client {
 
                     double montantPlus = sc.nextDouble();
                     int choixCompte1 = 1;
-                    if (NombreDeComptes > 1) {
+                    if (nombreDeComptes > 1) {
 
                         System.out.println();
                         System.out.println("Sur quelle compte ? : ");
@@ -116,7 +116,7 @@ public class Client {
                     System.out.println("De quel montant ? : ");
                     double montantMoin = sc.nextDouble();
                     int choixCompte2 = 1;
-                    if (NombreDeComptes > 1) {
+                    if (nombreDeComptes > 1) {
 
                         System.out.println();
                         System.out.println("Sur quelle compte ? : ");
@@ -136,7 +136,7 @@ public class Client {
 
 
                 case 3:
-                    if (NombreDeComptes > 1) {
+                    if (nombreDeComptes > 1) {
                         System.out.print("De quel montant ? : ");
                         double montantVir = sc.nextDouble();
 
@@ -153,7 +153,7 @@ public class Client {
                         int destinataire = sc.nextInt();
 
                         System.out.println();
-                        if ((emetteur <= NombreDeComptes) && (destinataire <= NombreDeComptes) && (NombreDeComptes > 1) && (comptes[emetteur].getSolde() >= montantVir)) {
+                        if ((emetteur <= nombreDeComptes) && (destinataire <= nombreDeComptes) && (nombreDeComptes > 1) && (comptes[emetteur].getSolde() >= montantVir)) {
                             comptes[emetteur].virer(montantVir, comptes[destinataire]);
                             System.out.println("Le virement a étté effectué");
                             System.out.println();
@@ -172,17 +172,17 @@ public class Client {
 
                 case 4:
                     ajouterCompte();
-                    System.out.println("Le compte n°" + NombreDeComptes + " a été créé");
+                    System.out.println("Le compte n°" + nombreDeComptes + " a été créé");
                     System.out.println();
                     break;
 
                 case 5:
 
-                    if (NombreDeComptes > 1) {
+                    if (nombreDeComptes > 1) {
 
-                        comptes[NombreDeComptes].virer(comptes[NombreDeComptes].getSolde(), comptes[NombreDeComptes - 1]);
-                        NombreDeComptes--;
-                        System.out.println("le dernier compte a été suprimer et son solde a été virer au compte n°" + NombreDeComptes);
+                        comptes[nombreDeComptes].virer(comptes[nombreDeComptes].getSolde(), comptes[nombreDeComptes - 1]);
+                        nombreDeComptes--;
+                        System.out.println("le dernier compte a été suprimer et son solde a été virer au compte n°" + nombreDeComptes);
                     } else {
                         System.out.println(" vous poseder qu'un seule compte , impossible de le suprimer ! ");
                     }
