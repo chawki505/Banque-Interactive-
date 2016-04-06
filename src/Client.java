@@ -10,6 +10,7 @@ public class Client {
     private Compte[] comptes = new Compte[100];
     private int nombreDeComptes = 0;
     private String nom;
+    private Scanner sc;
 
 
 
@@ -80,7 +81,7 @@ public class Client {
             System.out.println();
 
             System.out.print("Votre choix: ");
-            Scanner sc = new Scanner(System.in);
+            sc = new Scanner(System.in);
             int reponse = sc.nextInt();
             System.out.println();
 
@@ -89,104 +90,30 @@ public class Client {
 
                 case 1:
 
-                    System.out.print("De quel montant ? : ");
-
-                    double montantPlus = sc.nextDouble();
-                    int choixCompte1 = 1;
-                    if (nombreDeComptes > 1) {
-
-                        System.out.println();
-                        System.out.println("Sur quelle compte ? : ");
-                        afficherCompte();
-                        System.out.println();
-                        System.out.print("votre choix : ");
-                        choixCompte1 = sc.nextInt();
-
-                    }
-                    comptes[choixCompte1].depot(montantPlus);
-                    System.out.println("Le depot a été effectué");
-                    System.out.println();
-                    afficherSolde();
-                    System.out.println(" ");
+                    interactionDepot();
                     break;
 
 
                 case 2:
 
-                    System.out.println("De quel montant ? : ");
-                    double montantMoin = sc.nextDouble();
-                    int choixCompte2 = 1;
-                    if (nombreDeComptes > 1) {
-
-                        System.out.println();
-                        System.out.println("Sur quelle compte ? : ");
-                        afficherCompte();
-                        System.out.println();
-                        System.out.print("votre choix : ");
-                        choixCompte2 = sc.nextInt();
-
-                    }
-                    if (montantMoin <= comptes[choixCompte2].getSolde()) {
-                        comptes[choixCompte2].retrait(montantMoin);
-                        System.out.println("Le retrait a été effectué : ");
-                        afficherSolde();
-                    } else System.out.println(" Retrait impossible , montant superieur au solde du compte ! ");
-                    System.out.println(" ");
+                    InteractionRetrait();
                     break;
 
 
                 case 3:
-                    if (nombreDeComptes > 1) {
-                        System.out.print("De quel montant ? : ");
-                        double montantVir = sc.nextDouble();
-
-                        System.out.println();
-                        System.out.println("Vos comptes :");
-                        afficherCompte();
-                        System.out.println();
-
-                        System.out.print("Compte emetteur : ");
-                        int emetteur = sc.nextInt();
-
-
-                        System.out.print("Compte destinataire : ");
-                        int destinataire = sc.nextInt();
-
-                        System.out.println();
-                        if ((emetteur <= nombreDeComptes) && (destinataire <= nombreDeComptes) && (nombreDeComptes > 1) && (comptes[emetteur].getSolde() >= montantVir)) {
-                            comptes[emetteur].virer(montantVir, comptes[destinataire]);
-                            System.out.println("Le virement a étté effectué");
-                            System.out.println();
-                            afficherBilan();
-                            System.out.println(" ");
-
-                        } else {
-                            System.out.println("Un des comptes n'existe pas ou le montant est superieur au solde du compte ! ");
-                            System.out.println(" ");
-                        }
-                    } else System.out.println("Vous n'avez qu'un seul compte ! ");
-                    System.out.println();
+                    interactionVirement();
 
                     break;
 
 
                 case 4:
-                    ajouterCompte();
-                    System.out.println("Le compte n°" + nombreDeComptes + " a été créé");
-                    System.out.println();
+                    interactionAddcompte();
+
                     break;
 
                 case 5:
 
-                    if (nombreDeComptes > 1) {
-
-                        comptes[nombreDeComptes].virer(comptes[nombreDeComptes].getSolde(), comptes[nombreDeComptes - 1]);
-                        nombreDeComptes--;
-                        System.out.println("le dernier compte a été suprimer et son solde a été virer au compte n°" + nombreDeComptes);
-                    } else {
-                        System.out.println(" vous poseder qu'un seule compte , impossible de le suprimer ! ");
-                    }
-                    System.out.println();
+                    interactionDeleteCompte();
                     break;
 
 
@@ -209,6 +136,105 @@ public class Client {
 
             }
         }
+    }
+
+    private void interactionDeleteCompte() {
+        if (nombreDeComptes > 1) {
+
+            comptes[nombreDeComptes].virer(comptes[nombreDeComptes].getSolde(), comptes[nombreDeComptes - 1]);
+            nombreDeComptes--;
+            System.out.println("le dernier compte a été suprimer et son solde a été virer au compte n°" + nombreDeComptes);
+        } else {
+            System.out.println(" vous poseder qu'un seule compte , impossible de le suprimer ! ");
+        }
+        System.out.println();
+    }
+
+    private void interactionAddcompte() {
+        ajouterCompte();
+        System.out.println("Le compte n°" + nombreDeComptes + " a été créé \n");
+    }
+
+    private void interactionVirement() {
+        if (nombreDeComptes > 1) {
+            System.out.print("De quel montant ? : ");
+            double montantVir = sc.nextDouble();
+
+            System.out.println();
+            System.out.println("Vos comptes :");
+            afficherCompte();
+            System.out.println();
+
+            System.out.print("Compte emetteur : ");
+            int emetteur = sc.nextInt();
+
+
+            System.out.print("Compte destinataire : ");
+            int destinataire = sc.nextInt();
+
+            System.out.println();
+            // TODO: find other name for the variables
+            boolean isNombreCompte = (emetteur <= nombreDeComptes) && (destinataire <= nombreDeComptes);
+            boolean isSoldeOk = comptes[emetteur].getSolde() >= montantVir;
+
+            if (isNombreCompte && (nombreDeComptes > 1) && isSoldeOk) {
+                comptes[emetteur].virer(montantVir, comptes[destinataire]);
+                System.out.println("Le virement a étté effectué");
+                System.out.println();
+                afficherBilan();
+                System.out.println(" ");
+
+            } else {
+                System.out.println("Un des comptes n'existe pas ou le montant est superieur au solde du compte ! ");
+                System.out.println(" ");
+            }
+        } else System.out.println("Vous n'avez qu'un seul compte ! ");
+        System.out.println();
+    }
+
+    private void InteractionRetrait() {
+        System.out.println("De quel montant ? : ");
+        double montantMoin = sc.nextDouble();
+        int choixCompte2 = 1;
+        if (nombreDeComptes > 1) {
+
+            System.out.println();
+            System.out.println("Sur quelle compte ? : ");
+            afficherCompte();
+            System.out.println();
+            System.out.print("votre choix : ");
+            choixCompte2 = sc.nextInt();
+
+        }
+        if (montantMoin <= comptes[choixCompte2].getSolde()) {
+            comptes[choixCompte2].retrait(montantMoin);
+            System.out.println("Le retrait a été effectué : ");
+            afficherSolde();
+        } else System.out.println(" Retrait impossible , montant superieur au solde du compte ! ");
+        System.out.println(" ");
+    }
+
+    private void interactionDepot() {
+        System.out.print("De quel montant ? : ");
+
+        double montantPlus = sc.nextDouble();
+        int choixCompte1 = 1;
+        if (nombreDeComptes > 1) {
+
+            System.out.println();
+            System.out.println("Sur quelle compte ? : ");
+            afficherCompte();
+            System.out.println();
+            System.out.print("votre choix : ");
+            choixCompte1 = sc.nextInt();
+
+        }
+        comptes[choixCompte1].depot(montantPlus);
+        System.out.println("Le depot a été effectué");
+        System.out.println();
+        afficherSolde();
+        System.out.println(" ");
+        return;
     }
 }
 
