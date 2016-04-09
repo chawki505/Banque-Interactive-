@@ -30,10 +30,7 @@ public class Compte {
 
     // pour faire un virement entre 2 comptes
     public void virer(double valeur, Compte destinataire) {
-
-        if (valeur > 0) {
             destinataire.depot(valeur);
             retrait(valeur);
-        }
     }
 }
