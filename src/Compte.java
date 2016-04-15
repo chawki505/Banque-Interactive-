@@ -4,11 +4,11 @@
 
 public class Compte {
 
-    /* Attributs/constructeur */
+    /* TODO: Attributs/constructeur */
 
     private double solde = 0;
 
-    /*  Methodes */
+    /*  TODO: Methodes */
 
     // pour faire un dépôt sur le compte.
     public void depot(double valeur) {
@@ -22,15 +22,20 @@ public class Compte {
     }
 
 
-    // pour obtenir la valeur du solde
+    // pour obtenir la valeur du solde ( Getters )
     public double getSolde() {
         return solde;
     }
 
+    // pour modifier la valeur du solde ( Setters )
+    public void setSolde(double solde) {
+        this.solde = solde;
+    }
 
     // pour faire un virement entre 2 comptes
     public void virer(double valeur, Compte destinataire) {
-            destinataire.depot(valeur);
-            retrait(valeur);
+        retrait(valeur);
+        destinataire.depot(valeur);
+
     }
 }
