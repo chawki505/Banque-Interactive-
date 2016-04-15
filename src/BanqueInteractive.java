@@ -19,7 +19,8 @@ public class BanqueInteractive {
     public void interaction() {
         boolean fini = true;
         while (fini) {
-            System.out.println("         \n__________________________________________      ");
+            System.out.println("");
+            System.out.println("         __________________________________________      ");
             System.out.println("        [| Bienvenu dans la banque Chawki & ishak |] ");
             System.out.println("      +-------------------  Menu  --------------------+   ");
             System.out.println("      | Quelle operation voulez-vous effectuer?       |  ");
