@@ -1,4 +1,4 @@
-# Banque-Interactive-
+# BanqueInteractive
 Mini projet java sur une mini banque interactive 
 
 POO Mini projet, Sujet 1:
@@ -7,50 +7,10 @@ https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxqYXZhaW9vc
 Par CHOUIB Chawki & NIAR Nejm Edine Ishak  .
 
 
-
-
-Les étapes de la création du projet 
-
-
-Titre du projet : mini banque interactive
-
-
-1-Architecture Logiciel :
-
-Identification des principaux acteurs.
-Identification des principaux objets.
-Représentation des objets un utilisant le diagramme de classe UML.
-Détermination des relations entre les objets.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2-Création des classes:
+Création des classes:
 
 1-La classe Compte :
 La première étape est d’écrire une classe Compte. Celle-ci  contient 1 attributs privés ainsi que 5 méthodes publiques :
-
-
-
-
-
-
-
 
 
  Attributs :
@@ -70,29 +30,8 @@ La classe Comptes contient 3 méthodes :
 
 
 
-
-
-
-
-
 2-La classe Client :
 La classe Client possède 4 attributs privés ,1 constructeur et possède également 13 méthodes :
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  Attributs :
 La classe Client possède  4 attributs :
@@ -108,7 +47,6 @@ Setters et Getters :
 Constructeur :
 La classe Client possède 1 constructeur :
 -Client()  //pour créer un nouveau client
-
 
 
 Méthodes : 
@@ -127,33 +65,16 @@ La classe Client possède 12 méthodes :
 -interaction()  //affiche le menu du client
 
 
--
-
-
-
-
-
-
 
 3-La classe BanqueInteractive:
 De même qu’un client peut avoir plusieurs comptes, une banque peut avoir plusieurs clients.
 la classe BanqueInteractive, possédant entre autre  3 attribue privés et 5 méthodes :
-
-
-
-
-
-
-
-
-
 
  Attributs :
 La classe Client possède  4 attributs :
 -nombreDeClients
 -client
 -clavier //pour la saisi du clavier 
-
 
 Méthodes : 
 La classe Client possède 5 méthodes : 
@@ -162,7 +83,6 @@ La classe Client possède 5 méthodes :
 -interactionAddClient() //complète la méthode ajouterClient pour l'affichage 
 -interactionMenuClient() //affiche le menu client 
 -interaction() //affiche le menu de la banque ( le menu principale ) 
-
 
 
 
