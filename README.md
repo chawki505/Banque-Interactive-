@@ -100,5 +100,3 @@ La classe Client possède 5 méthodes :
 **3-La classe Main:**
 c'est une classe qui permet de faire fonctionner notre banque interactive ,
 elle utilise seulement la méthode main .
-=======
->>>>>>> e577bfb94401e34085c9722d84ceddc46c0d6587
