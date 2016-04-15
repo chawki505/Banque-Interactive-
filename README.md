@@ -6,7 +6,6 @@ https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxqYXZhaW9vc
 
 Par CHOUIB Chawki & NIAR Nejm Edine Ishak  .
 
-<<<<<<< HEAD
 **-------------------------------------**
 
 Les étapes de la création du projet 
